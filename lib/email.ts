@@ -20,11 +20,11 @@ export async function sendOtpEmail(to: string, name: string, code: string): Prom
   try {
     const transporter = getTransporter();
     if (!transporter) {
-      console.warn("⚠️ [Email] GMAIL_APP_PASS not configured in environment. Test code:", code);
+      console.warn("⚠️ [Email] EMAIL_PASS not configured in environment. Test code:", code);
       return { success: true };
     }
 
-    const fromAddress = `"كابتن برجر 🍔🔥" <${process.env.EMAIL_USER || "hamzaovet@gmail.com"}>`;
+    const fromAddress = `"فسيخ ورنجة الفراعنة 🐟" <${process.env.EMAIL_USER || "hamzaovet@gmail.com"}>`;
 
     const htmlContent = `
       <!DOCTYPE html>
@@ -32,30 +32,30 @@ export async function sendOtpEmail(to: string, name: string, code: string): Prom
       <head>
         <meta charset="utf-8">
         <style>
-          body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; background-color: #F5EBDC; color: #502314; margin: 0; padding: 20px; }
-          .container { max-width: 520px; margin: 0 auto; background: #FFFFFF; border: 2px solid #FFAE00; border-radius: 24px; padding: 36px 28px; text-align: center; box-shadow: 0 8px 30px rgba(80, 35, 20, 0.1); }
-          .logo { color: #D62300; font-size: 28px; font-weight: 900; margin-bottom: 6px; }
-          .sub { color: #502314; font-size: 14px; margin-bottom: 24px; font-weight: 700; }
-          .otp-box { background: #F5EBDC; border: 2px dashed #D62300; border-radius: 16px; padding: 18px; margin: 24px 0; font-size: 38px; font-weight: 900; letter-spacing: 8px; color: #D62300; font-family: monospace; }
-          .info { color: #502314; font-size: 13px; line-height: 1.6; }
-          .footer { margin-top: 30px; font-size: 11px; color: #8A6D5E; border-top: 1px solid #EADBCC; padding-top: 16px; }
+          body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; background-color: #071524; color: #f8fafc; margin: 0; padding: 20px; }
+          .container { max-width: 520px; margin: 0 auto; background: #0d2137; border: 2px solid #f59e0b; border-radius: 24px; padding: 36px 28px; text-align: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); }
+          .logo { color: #f59e0b; font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+          .sub { color: #94a3b8; font-size: 13px; margin-bottom: 24px; font-weight: 700; }
+          .otp-box { background: #071524; border: 2px dashed #f59e0b; border-radius: 16px; padding: 18px; margin: 24px 0; font-size: 38px; font-weight: 900; letter-spacing: 8px; color: #f59e0b; font-family: monospace; }
+          .info { color: #cbd5e1; font-size: 13px; line-height: 1.6; }
+          .footer { margin-top: 30px; font-size: 11px; color: #64748b; border-top: 1px solid #1a3654; padding-top: 16px; }
         </style>
       </head>
       <body>
         <div class="container">
-          <div class="logo">كابتن برجر 🍔</div>
-          <div class="sub">أشهى برجر لحم بلدي ودجاج كرسبي في الشيخ زايد و6 أكتوبر</div>
+          <div class="logo">🐟 فسيخ ورنجة الفراعنة</div>
+          <div class="sub">ملوك الأسماك المملحة والمدخنة والبطارخ منذ 1990</div>
           
-          <h2 style="color: #502314; font-size: 20px; margin: 0 0 10px 0;">أهلاً بك يا ${name || "عميلنا العزيز"} 👋</h2>
-          <p class="info">استخدم رمز التحقق التالي لتأكيد تسجيل حسابك في التطبيق:</p>
+          <h2 style="color: #f8fafc; font-size: 20px; margin: 0 0 10px 0;">أهلاً بك يا ${name || "عميلنا العزيز"} 👋</h2>
+          <p class="info">استخدم كود التحقق السري التالي لتأكيد تسجيل حسابك في التطبيق:</p>
 
           <div class="otp-box">${code}</div>
 
-          <p class="info">⚠️ الرمز صالح لمدة 10 دقائق فقط. لا تشارك هذا الرمز مع أي شخص.</p>
+          <p class="info">⚠️ هذا الرمز صالح لمدة 10 دقائق فقط. لا تشارك هذا الرمز مع أي شخص.</p>
 
           <div class="footer">
-            تم إرسال هذا البريد تلقائياً من منصة كابتن برجر — فرعي الشيخ زايد و6 أكتوبر<br/>
-            للطلبات والخدمة السريعة: 01206002168 | 01117776349
+            تم إرسال هذا البريد آلياً من منصة فسيخ ورنجة الفراعنة السحابية<br/>
+            الخط الساخن والدليفري السريع: 01000388911 | 01069717413
           </div>
         </div>
       </body>
@@ -65,7 +65,7 @@ export async function sendOtpEmail(to: string, name: string, code: string): Prom
     await transporter.sendMail({
       from: fromAddress,
       to,
-      subject: `رمز التحقق الخاص بك في كابتن برجر 🍔: ${code}`,
+      subject: `كود التحقق الخاص بك في فسيخ ورنجة الفراعنة 🐟: ${code}`,
       html: htmlContent,
     });
 
